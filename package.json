@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/huynhts/bamazon/issues"
   },
-  "homepage": "https://github.com/huynhts/bamazon#readme"
+  "homepage": "https://github.com/huynhts/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.5.1"
+  }
 }
