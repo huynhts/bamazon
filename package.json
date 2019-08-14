@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "bamazon shoppers node database",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "hi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huynhts/bamazon.git"
+  },
+  "keywords": [
+    "bamazon",
+    "customer",
+    "database"
+  ],
+  "author": "sang h",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huynhts/bamazon/issues"
+  },
+  "homepage": "https://github.com/huynhts/bamazon#readme"
+}
