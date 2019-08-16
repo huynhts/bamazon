@@ -25,14 +25,12 @@ connection.connect(function(err) {
 
 
 
-    connection.query('SELECT * FROM products', function(err, response){
+    connection.query('SELECT * FROM bamazon.products', function(err, response){
         if(err) throw err;
 
         console.table(response);
         bamazonStart();
     });
-
-    connection.end();
 
 });
 
@@ -79,13 +77,39 @@ function purchaseQuantity () {
     })
     .then(function(answer) {
       // based on their answer, either call the bid or the post functions
-        buyQuantity = answer.itemQuantity;
+      buyQuantity = answer.itemQuantity;
 
-        //set up if statement to compare buyQuantity to available quantity
-        //set up mysql connection to take in price and multiply by buyQuantity for total purchase amount
-        //update mysql table by taking stock quantity and subtract buyQuantity
-    
-        console.log("You will be purchasing " + buyQuantity + " of item " + buyID + "! Thank you for your business!")
+      //set up if statement to compare buyQuantity to available quantity
+      //set up mysql connection to take in price and multiply by buyQuantity for total purchase amount
+      //update mysql table by taking stock quantity and subtract buyQuantity
+  
+      checkStock();
     });
+
     
+};
+
+function checkStock () {
+  connection.query("SELECT stock_quantity FROM products WHERE item_id=?", buyID, function(err, response) {
+    if(err) throw err;
+
+    var stockCheck = +response[0].stock_quantity - +buyQuantity;
+
+    console.log(stockCheck);
+
+    if (stockCheck > 0) {
+      ringUp ();
+    } else {
+      console.log(`We're sorry, but we are out of item ${buyID}`);
+    }
+
+  });
+};
+
+function ringUp () {
+  connection.query("SELECT price FROM products WHERE item_id=?", buyID, function(err, response) {
+    if(err) throw err;
+
+    console.log(+response[0].price * +buyQuantity);
+  });
 };
