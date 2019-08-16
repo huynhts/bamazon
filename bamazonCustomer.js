@@ -98,7 +98,7 @@ function checkStock () {
     if (stockCheck > 0) {
       ringUp ();
     } else {
-      console.log(colors.yellow.bgBlack(`We're sorry, but either we are out of item ${buyID} or we do not have enough stock (${+response[0].stock_quantity} available). \nPlease adjust the quantity you'd like to order or check back in a few weeks for a restock. Thank you!`));
+      console.log(colors.red.bgWhite.underline(`We're sorry, but either we are out of item ${buyID} or we do not have enough stock (${+response[0].stock_quantity} available). \nPlease adjust the quantity you'd like to order or check back in a few weeks for a restock. Thank you!`));
 
       showDatabase();
     }
